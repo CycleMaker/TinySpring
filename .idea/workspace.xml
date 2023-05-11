@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff34f0a2-f557-4eaa-8e3c-db5c92f366d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/Container.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/TinyApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/annotation/Autowired.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/annotation/Bean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/annotation/Extension.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/annotation/Value.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/common/Converter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/config/ResourceScanner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/config/resolver/ApplicationPropertiesResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/config/resolver/ResourceResolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/config/resolver/SimplePropertiesResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/Aspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/AutoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/BeanNameGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/BeanScanner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/ContextFinishListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/InitializingBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/RegisterBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/AutoConfigurationBeanFactoryPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/AutowiredBeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/BeanFactoryPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/BeanInstantiationProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/BeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/DefaultInstantiationProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/ExtensionBeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/FillConfigValueBeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/InitContextBeanFactoryPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/InitializingBeanProcessorFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/RegisterBeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/tiny/spring/core/processor/ResolveResourceBeanFactoryPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/tiny/spring/core/TinySpring.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/tiny/spring/core/service/AutoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/tiny/spring/core/service/FirstAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/tiny/spring/core/service/MyAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/tiny/spring/core/service/TestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/tiny/spring/core/service/TestService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/cglib/cglib/2.2.2/cglib-2.2.2.jar!/net/sf/cglib/proxy/MethodInterceptor.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/cglib/cglib/2.2.2/cglib-2.2.2.jar!/net/sf/cglib/proxy/MethodProxy.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2O3J96IdPkCZOPoh61K8dstqgO7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/META-INF" />
+      <recent name="$PROJECT_DIR$/src/main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.tiny.spring" />
+      <recent name="org.tiny.spring.ioc" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TinySpring">
+    <configuration name="AutoConfigurationBeanFactoryPostProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.tiny.spring.core.processor.AutoConfigurationBeanFactoryPostProcessor" />
+      <module name="TinySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.tiny.spring.core.processor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExtensionBeanPostProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.tiny.spring.core.processor.ExtensionBeanPostProcessor" />
+      <module name="TinySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.tiny.spring.core.processor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FillConfigValueBeanPostProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.tiny.spring.core.processor.FillConfigValueBeanPostProcessor" />
+      <module name="TinySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.tiny.spring.core.processor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TinyApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.tiny.spring.TinyApplication" />
+      <module name="TinySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.tiny.spring.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TinySpring" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.tiny.spring.core.TinySpring" />
+      <module name="TinySpring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.tiny.spring.core.processor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TinyApplication" />
+        <item itemvalue="Application.TinySpring" />
+        <item itemvalue="Application.FillConfigValueBeanPostProcessor" />
+        <item itemvalue="Application.ExtensionBeanPostProcessor" />
+        <item itemvalue="Application.AutoConfigurationBeanFactoryPostProcessor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff34f0a2-f557-4eaa-8e3c-db5c92f366d5" name="Changes" comment="" />
+      <created>1680783182587</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680783182587</updated>
+      <workItem from="1680783191978" duration="15538000" />
+      <workItem from="1680854781938" duration="44815000" />
+      <workItem from="1681453519268" duration="18127000" />
+      <workItem from="1681892976438" duration="3470000" />
+      <workItem from="1681976093037" duration="38735000" />
+      <workItem from="1683190636869" duration="1322000" />
+      <workItem from="1683252131480" duration="558000" />
+      <workItem from="1683253229293" duration="632000" />
+      <workItem from="1683254629479" duration="6755000" />
+      <workItem from="1683363114674" duration="36158000" />
+      <workItem from="1683620495055" duration="1550000" />
+      <workItem from="1683685678853" duration="1340000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring/src/main/java/org/spring/test/MyBeanFactoryPostProcessor.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring/src/main/java/org/spring/test/MyBeanPostProcessor.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/tiny/spring/config/resolver/ApplicationPropertiesResolver.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.class</url>
+          <line>63</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.class</url>
+          <line>60</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.java</url>
+          <line>425</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.1.2.RELEASE/spring-core-5.1.2.RELEASE-sources.jar!/org/springframework/core/io/support/SpringFactoriesLoader.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
