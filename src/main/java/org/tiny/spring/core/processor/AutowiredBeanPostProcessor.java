@@ -25,7 +25,7 @@ public class AutowiredBeanPostProcessor implements BeanPostProcessor {
             Class fieldType = field.getType();
             if (fieldType == Container.class) {
                 setField(field ,bean, container);
-                return;
+                continue;
             }
             Object dependency = container.getBeanByName(field.getName(), fieldType);
             if (Objects.isNull(dependency)) {
