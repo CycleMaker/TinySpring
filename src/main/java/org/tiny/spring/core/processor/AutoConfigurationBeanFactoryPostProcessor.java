@@ -19,7 +19,9 @@ public class AutoConfigurationBeanFactoryPostProcessor implements BeanFactoryPos
     private ApplicationPropertiesResolver propertiesResolver;
     @Override
     public void process(Container container) {
-        propertiesResolver = container.getSingleton(ApplicationPropertiesResolver.class, true);
+        if (Objects.isNull(propertiesResolver)) {
+            propertiesResolver = container.getSingleton(ApplicationPropertiesResolver.class, true);
+        }
         registerFromFactory(container);
     }
 

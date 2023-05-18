@@ -27,9 +27,9 @@ public class RegisterBeanPostProcessor implements BeanPostProcessor {
             if (Objects.isNull(registerBeanMap) || registerBeanMap.isEmpty()) {
                 return bean;
             }
-            String registerBeanName = registerBeanMap.keySet().stream().findFirst().get();
-            Object registerBean = registerBeanMap.get(registerBeanName);
-            container.registerBean(registerBeanName, registerBean, true);
+            registerBeanMap.forEach((newBeanName,newBean)->{
+                container.registerBean(newBeanName, newBean, true);
+            });
         }
         return bean;
     }

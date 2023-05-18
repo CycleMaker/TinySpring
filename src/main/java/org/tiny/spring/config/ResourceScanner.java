@@ -29,9 +29,7 @@ public class ResourceScanner {
         File[] resources = file.listFiles();
         if (Objects.isNull(resources)) { return res; }
         for (File resource : resources) {
-            if (resource.isDirectory()) {
-                continue;
-            } else {
+            if (!resource.isDirectory()){
                 res.add(resource.getPath());
             }
         }
