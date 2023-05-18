@@ -4,9 +4,7 @@ import org.tiny.spring.annotation.Autowired;
 import org.tiny.spring.Container;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author: wuzihan (wuzihan@youzan.com)
@@ -19,8 +17,8 @@ public class AutowiredBeanPostProcessor implements BeanPostProcessor {
 
     private void processAutowired(Object bean, Container container) {
         Class clazz = bean.getClass();
-        List<Field> annotatedFields = getAnnotatedFields(clazz);
-        for (Field field : annotatedFields) {
+        Map<Field,Autowired> annotatedFields = getAnnotatedFields(clazz);
+        for (Field field : annotatedFields.keySet()) {
             field.setAccessible(true);
             Class fieldType = field.getType();
             if (fieldType == Container.class) {
@@ -30,10 +28,16 @@ public class AutowiredBeanPostProcessor implements BeanPostProcessor {
             Object dependency = container.getBeanByName(field.getName(), fieldType);
             if (Objects.isNull(dependency)) {
                 List<?> dependencies = container.getBeanByType(fieldType);
+                boolean check = annotatedFields.get(field).require();
                 if (dependencies == null || dependencies.isEmpty()) {
-                    throw new RuntimeException("bean not exist:" + clazz.getName());
+                    if (check) {
+                        throw new RuntimeException("bean not exist:" + clazz.getName());
+                    } else {
+                        dependency = null;
+                    }
+                } else {
+                    dependency = dependencies.stream().findFirst().get();
                 }
-                dependency = dependencies.stream().findFirst().get();
             }
             setField(field ,bean, dependency);
         }
@@ -47,12 +51,13 @@ public class AutowiredBeanPostProcessor implements BeanPostProcessor {
         }
     }
 
-    private List<Field> getAnnotatedFields(Class clazz) {
-        List<Field> res = new ArrayList<>();
+    private Map<Field,Autowired> getAnnotatedFields(Class clazz) {
+        Map<Field,Autowired> res = new HashMap<>();
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
-            if (Objects.nonNull(field.getAnnotation(Autowired.class))) {
-                res.add(field);
+            Autowired annotation = field.getAnnotation(Autowired.class);
+            if (Objects.nonNull(annotation)) {
+                res.put(field,annotation);
             }
         }
         return res;
