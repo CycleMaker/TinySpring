@@ -4,8 +4,9 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import org.tiny.spring.Container;
 import org.tiny.spring.annotation.Extension;
-import org.tiny.spring.core.Aspect;
-
+import org.tiny.spring.core.aop.AopContext;
+import org.tiny.spring.core.aop.Aspect;
+import java.lang.reflect.Modifier;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -27,13 +28,15 @@ public class ExtensionBeanPostProcessor implements BeanPostProcessor {
         if (methodAspectMap.isEmpty()) {
             return bean;
         }
-        return enhance(bean, methodAspectMap);
+        Object agent = enhance(bean, methodAspectMap);
+        AopContext.putAgent(bean.getClass(), agent);
+        return agent;
     }
 
 
     public Map<Method, List<Class<? extends Aspect>>> getExtensionMap(Class clazz) {
         Map<Method, List<Class<? extends Aspect>>> methodMap = new HashMap<>();
-        for (Method m : clazz.getDeclaredMethods()) {
+        for (Method m : listDeclaredMethod(clazz,false)) {
             Extension anno = m.getAnnotation(Extension.class);
             if (Objects.nonNull(anno)) {
                 methodMap.computeIfAbsent(m, e -> new ArrayList<>()).addAll(Arrays.stream(anno.aspect()).collect(Collectors.toList()));
@@ -44,7 +47,7 @@ public class ExtensionBeanPostProcessor implements BeanPostProcessor {
             Extension clzExtension = (Extension) clzAnno;
             Class<? extends Aspect>[] clazzAspects = clzExtension.aspect();
             if (Objects.nonNull(clazzAspects)) {
-                for (Method m : clazz.getDeclaredMethods()) {
+                for (Method m : listDeclaredMethod(clazz, true)) {
                     if (!methodMap.containsKey(m)) {
                         methodMap.computeIfAbsent(m, e -> new ArrayList<>()).addAll(Arrays.stream(clazzAspects).collect(Collectors.toList()));
                     }
@@ -96,6 +99,19 @@ public class ExtensionBeanPostProcessor implements BeanPostProcessor {
             throw new RuntimeException("Lack Aspect Class:" + clazz);
         }
         return aspects.get(0);
+    }
+
+    private List<Method> listDeclaredMethod(Class clazz,boolean modifyPublic) {
+        List<Method> res = new ArrayList<>();
+        for (Method m : clazz.getDeclaredMethods()) {
+            int modifiers = m.getModifiers();
+            if (!Modifier.isStatic(modifiers) && m.getDeclaringClass() == clazz) {
+                if (!modifyPublic || Modifier.isPublic(modifiers)) {
+                    res.add(m);
+                }
+            }
+        }
+        return res;
     }
 
 

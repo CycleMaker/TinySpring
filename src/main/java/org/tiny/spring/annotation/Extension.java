@@ -1,6 +1,6 @@
 package org.tiny.spring.annotation;
 
-import org.tiny.spring.core.Aspect;
+import org.tiny.spring.core.aop.Aspect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

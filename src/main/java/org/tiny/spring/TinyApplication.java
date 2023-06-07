@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class TinyApplication{
+public class TinyApplication {
 
     public static void run(Class clazz) {
         Container container = Container.getContainer();
@@ -43,9 +43,13 @@ public class TinyApplication{
 
     private static void processBeanFactoryPostProcessorsWithoutExecuted(Container container, Set<BeanFactoryPostProcessor> executed) {
         List<BeanFactoryPostProcessor> beanByType = container.getBeanByType(BeanFactoryPostProcessor.class);
-        if (executed.containsAll(beanByType)) { return; }
+        if (executed.containsAll(beanByType)) {
+            return;
+        }
         for (BeanFactoryPostProcessor beanFactoryPostProcessor : beanByType) {
-            if (executed.contains(beanFactoryPostProcessor)) { continue; }
+            if (executed.contains(beanFactoryPostProcessor)) {
+                continue;
+            }
             beanFactoryPostProcessor.process(container);
             executed.add(beanFactoryPostProcessor);
         }
@@ -58,7 +62,7 @@ public class TinyApplication{
         processors.forEach(container::registerBean);
     }
 
-    private static Map<String,Class> scanBeanClass(Class clazz) {
+    private static Map<String, Class> scanBeanClass(Class clazz) {
         Package pkg = clazz.getPackage();
         return BeanScanner.listNeedImportToBeanClass(pkg == null ? "" : pkg.getName());
     }
@@ -74,15 +78,18 @@ public class TinyApplication{
             while (iterator.hasNext()) {
                 String beanName = iterator.next();
                 Object bean = beanNameMap.get(beanName);
-                Object newBean = beanPostProcessor.postProcessAfterInitialization(bean,beanName);
-                container.registerBean(beanName, newBean ,false);
+                Object newBean = beanPostProcessor.postProcessAfterInitialization(bean, beanName);
+                if (newBean != bean) {
+                    container.unregisterBean(beanName, bean);
+                    container.registerBean(beanName, newBean, false);
+                }
             }
             beanNameMap = container.getBeanNameMap();
         }
     }
 
 
-    private static void invokeInstantiationProcessorAndRegisterBean(Map<String, Class> beanClassMap,Container container) {
+    private static void invokeInstantiationProcessorAndRegisterBean(Map<String, Class> beanClassMap, Container container) {
         initBeanInstantiationProcessor(container, beanClassMap.values());
         List<BeanInstantiationProcessor> processors = container
                 .getBeanByType(BeanInstantiationProcessor.class)
@@ -109,10 +116,10 @@ public class TinyApplication{
         for (Class clazz : classList) {
             try {
                 if (Arrays.asList(clazz.getInterfaces()).contains(targetClass)) {
-                    res.add((T)clazz.newInstance());
+                    res.add((T) clazz.newInstance());
                 }
             } catch (IllegalAccessException | InstantiationException e) {
-                throw new RuntimeException("BeanFactoryPostProcessor init error",e);
+                throw new RuntimeException(targetClass +" init error", e);
             }
         }
         return res;

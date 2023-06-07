@@ -1,5 +1,6 @@
 package org.tiny.spring;
 
+import org.tiny.spring.common.IdentitySet;
 import org.tiny.spring.core.BeanNameGenerator;
 
 import java.util.*;
@@ -11,9 +12,9 @@ import java.util.stream.Collectors;
  * @description
  */
 public class Container {
-    private Map<String,Object> nameContainerMap;
-    private Map<Class, Set<Object>> classContainerMap;
-    private Map<String,Object> configProperties;
+    private Map<String, Object> nameContainerMap;
+    private Map<Class, IdentitySet> classContainerMap;
+    private Map<String, Object> configProperties;
 
     private static final String BEAN_NAME_SPLITER = "%";
 
@@ -25,14 +26,14 @@ public class Container {
 
     private Container() {
         nameContainerMap = new HashMap<String, Object>();
-        classContainerMap = new HashMap<Class, Set<Object>>();
+        classContainerMap = new HashMap<Class, IdentitySet>();
         configProperties = new HashMap<>();
     }
 
-    public Map<String,Object> getBeanNameMap() {
-        Map<String,Object> outerBeanNameMap = new HashMap<>();
-        nameContainerMap.forEach((innerName,bean)->{
-            outerBeanNameMap.put(innerName.split(BEAN_NAME_SPLITER)[1],bean);
+    public Map<String, Object> getBeanNameMap() {
+        Map<String, Object> outerBeanNameMap = new HashMap<>();
+        nameContainerMap.forEach((innerName, bean) -> {
+            outerBeanNameMap.put(innerName.split(BEAN_NAME_SPLITER)[1], bean);
         });
         return outerBeanNameMap;
     }
@@ -41,7 +42,7 @@ public class Container {
         if (configProperties.containsKey(key) && checkExist) {
             throw new RuntimeException("config key is exist:" + key);
         }
-        configProperties.put(key,value);
+        configProperties.put(key, value);
     }
 
     public Object getConfigProperty(String key) {
@@ -51,12 +52,17 @@ public class Container {
     public void registerBean(Object bean) {
         String name = BeanNameGenerator.generateDefaultBeanName(bean);
         addBeanToNameContainerMap(name, bean, true, nameContainerMap);
-        addBeanToClassContainerMap(bean,this.classContainerMap);
+        addBeanToClassContainerMap(bean, this.classContainerMap);
     }
 
     public void registerBean(String name, Object bean, boolean checkExist) {
         addBeanToNameContainerMap(name, bean, checkExist, nameContainerMap);
         addBeanToClassContainerMap(bean, this.classContainerMap);
+    }
+
+    public void unregisterBean(String name, Object bean) {
+        removeBeanFromNameContainerMap(name, bean, this.nameContainerMap);
+        removeBeanFromClassContainerMap(bean, this.classContainerMap);
     }
 
 
@@ -71,7 +77,7 @@ public class Container {
             return res;
         }
         for (Object bean : objects) {
-            res.add((T)bean);
+            res.add((T) bean);
         }
         return res;
     }
@@ -91,21 +97,47 @@ public class Container {
         return clazz.getName() + BEAN_NAME_SPLITER + name;
     }
 
-    private void addBeanToClassContainerMap(Object bean,Map<Class, Set<Object>> classMap) {
-        Class<?>[] classes = bean.getClass().getInterfaces();
-        List<Class<?>> classList = Arrays.stream(classes).collect(Collectors.toList());
-        classList.add(bean.getClass());
-        for (Class clazz : classList) {
-            Set<Object> beans = classMap.get(clazz);
-            if (Objects.isNull(beans)) {
-                beans = new HashSet<Object>();
-                classMap.put(clazz,beans);
-            }
-            beans.add(bean);
+    private void addBeanToClassContainerMap(Object bean, Map<Class, IdentitySet> classMap) {
+        for (Class clazz : listBeanClass(bean)) {
+            classMap.computeIfAbsent(clazz, e -> new IdentitySet()).add(bean);
         }
     }
 
-    private void addBeanToNameContainerMap(String name, Object bean, boolean checkExist, Map<String,Object> beanNameMap) {
+    private void removeBeanFromClassContainerMap(Object bean, Map<Class, IdentitySet> classMap) {
+        for (Class clazz : listBeanClass(bean)) {
+            if (classMap.containsKey(clazz)) {
+                classMap.get(clazz).remove(bean);
+            }
+        }
+    }
+
+    private List<Class<?>> listBeanClass(Object bean) {
+        Class<?>[] classes = bean.getClass().getInterfaces();
+        List<Class<?>> classList = Arrays.stream(classes).collect(Collectors.toList());
+        classList.addAll(listSuperClass(bean.getClass()));
+        classList.add(bean.getClass());
+        return classList;
+    }
+
+    private List<Class<?>> listSuperClass(Class<?> clazz) {
+        List<Class<?>> res = new ArrayList<>();
+        for (; ; ) {
+            Class<?> parent = clazz.getSuperclass();
+            if (Objects.nonNull(parent) && parent != Object.class) {
+                res.add(parent);
+                clazz = parent;
+            } else {
+                break;
+            }
+        }
+        return res;
+    }
+
+    private void removeBeanFromNameContainerMap(String name, Object bean, Map<String, Object> beanNameMap) {
+        beanNameMap.remove(getInnerBeanName(name, bean.getClass()));
+    }
+
+    private void addBeanToNameContainerMap(String name, Object bean, boolean checkExist, Map<String, Object> beanNameMap) {
         if (Objects.isNull(name) || name.length() == 0) {
             throw new IllegalArgumentException();
         }
@@ -115,11 +147,11 @@ public class Container {
         if (checkExist && checkBeanExist(name, bean)) {
             throw new RuntimeException("the name is duplicated");
         }
-        beanNameMap.put(getInnerBeanName(name,bean.getClass()), bean);
+        beanNameMap.put(getInnerBeanName(name, bean.getClass()), bean);
     }
 
     private boolean checkBeanExist(String name, Object bean) {
-        String innerBeanName = getInnerBeanName(name,bean.getClass());
+        String innerBeanName = getInnerBeanName(name, bean.getClass());
         return nameContainerMap.containsKey(innerBeanName);
     }
 
