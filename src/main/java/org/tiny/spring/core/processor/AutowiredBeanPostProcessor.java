@@ -32,8 +32,6 @@ public class AutowiredBeanPostProcessor implements BeanPostProcessor {
                 if (dependencies == null || dependencies.isEmpty()) {
                     if (check) {
                         throw new RuntimeException("bean not exist:" + clazz.getName());
-                    } else {
-                        dependency = null;
                     }
                 } else {
                     dependency = dependencies.stream().findFirst().get();

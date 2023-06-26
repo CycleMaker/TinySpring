@@ -1,7 +1,6 @@
 package org.tiny.spring.core.processor;
 
 import org.tiny.spring.Container;
-import org.tiny.spring.config.resolver.ApplicationPropertiesResolver;
 import org.tiny.spring.config.resolver.ResourceResolver;
 
 import java.util.List;
